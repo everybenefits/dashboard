@@ -12,15 +12,15 @@ import { SeoProps } from '../../types/Seo'
 // Third party components
 import { NextSeo } from 'next-seo'
 
-export function Seo(data: SeoProps) {
+export function Seo({ title, description, url }: SeoProps) {
   return (
     <NextSeo
-      title={data.title}
-      description={data.description}
+      title={`${title} - Every Benefits`}
+      description={`${description}`}
       openGraph={{
         type: 'website',
         locale: 'en_IE',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL} ${data.url}`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL} ${url}`,
         site_name: "Every Benefits",
       }}
       twitter={{
