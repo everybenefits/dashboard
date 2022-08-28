@@ -1,3 +1,11 @@
+/**
+ * @Title AuthForm
+ * @Description This component is used add authentication form to the page.
+ * @Author Diesan Romero
+ * @Date 08-28-2022
+ * @Note This component has translation on file locales.ts.
+ */
+
 // Types
 import type { NextComponentType } from "next"
 
