@@ -3,7 +3,7 @@
  * @Description This page is for route /signin
  * @Author Diesan Romero
  * @Date 08-28-2022
- * @Note This page uses the component AuthForm on @components/AuthForm
+ * @Note This page uses the component AuthForm filed on @components/AuthForm
  */
 
 // Types

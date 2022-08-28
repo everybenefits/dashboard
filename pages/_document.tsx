@@ -12,7 +12,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="icon" href="/favicon/16x16.ico" />
+          <link rel="icon" href="/favicon/16x16.ico" sizes='16x16' />
+          <link rel="icon" href="/favicon/32x32.ico" sizes='32x32' />
+          <link rel="icon" href="/favicon/48x48.ico" sizes='48x48' />
+        </Head>
         <body>
           <Main />
           <NextScript />
