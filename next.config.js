@@ -16,11 +16,16 @@ const nextConfig = {
   httpAgentOptions: {
     keepAlive: true,
   },
+  i18n: {
+    locales: ["en", "es"],
+    defaultLocale: "es",
+    localeDetection: true,
+  },
   async redirects() {
     return [
       {
         source: "/",
-        destination: "/login",
+        destination: "/signin",
         permanent: true,
       },
     ];
