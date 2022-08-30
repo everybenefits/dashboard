@@ -3,10 +3,11 @@ import { auth } from "./index";
 
 // Firebase modules
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { AuthProps } from "../components/AuthForm/types";
 
 // Types
+import { AuthProps } from "../components/AuthForm/types";
 
+// Hooks
 export const createAccount = async ({ email, password } : AuthProps) => {
   if (!email || !password) {
     throw new Error('Email and password are required');

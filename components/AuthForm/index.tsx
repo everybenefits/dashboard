@@ -25,12 +25,12 @@ import { useRouter } from "next/router"
 import { toast } from "react-toastify"
 
 // Local Components
-import { Seo } from "../../components/Seo"
+import { Seo } from "@components/Seo"
 import { authErrorsEnglish } from "./errors"
 
 // Locales
 import { es, en } from "./locales"
-import { createAccount } from "../../firebase/authentication"
+import { createAccount } from "@firebase/authentication"
 
 export const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -115,6 +115,7 @@ export const AuthFormComponent: NextComponentType = () => {
       <Seo title={seo.title} description={seo.description} url={pathname} />
       <section className="h-screen my-5">
         <div className="container px-6 py-12 h-full">
+          
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
               <Image
@@ -126,6 +127,11 @@ export const AuthFormComponent: NextComponentType = () => {
               />
             </div>
             <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
+            <section>
+            <h1 className="text-3xl font-bold text-center text-green-800 mb-10">
+              {pathname === "/signup" ? t.signup.title : t.signin.title}
+            </h1>
+          </section>
               <form method="POST">
 
                 <div className="mb-6">

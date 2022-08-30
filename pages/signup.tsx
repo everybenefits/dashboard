@@ -10,7 +10,7 @@
 import { NextPage } from 'next'
 
 // Locale components
-import { AuthFormComponent } from '../components/AuthForm'
+import { AuthFormComponent } from '@components/AuthForm'
 
 const SignUpPage: NextPage = () => {
   return (

@@ -10,7 +10,7 @@
 import { NextPage } from 'next'
 
 // AUTH: Components
-import { AuthFormComponent } from '../components/AuthForm'
+import { AuthFormComponent } from '@components/AuthForm'
 
 const SignInPage: NextPage = () => {
   return (
