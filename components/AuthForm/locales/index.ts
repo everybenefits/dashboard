@@ -1,3 +1,5 @@
+import { authErrorsEnglish, authErrorsSpanish } from "../errors"
+
 export const en = {
   signin: {
     title: 'Sign In',
@@ -17,7 +19,8 @@ export const en = {
       forgotPassword: 'Forgot password?',
       loginInstead: 'Login instead?',
     }
-  }
+  },
+  errors: authErrorsEnglish
 }
 
 export const es = {
@@ -39,5 +42,6 @@ export const es = {
       forgotPassword: 'Recuperar contraseña',
       loginInstead: 'Iniciar sesión',
     }
-  }
+  },
+  errors: authErrorsSpanish
 }

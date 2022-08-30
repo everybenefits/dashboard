@@ -7,7 +7,7 @@
  */
 
 // Types
-import { SeoProps } from '../../types/Seo'
+import type { SeoProps } from './types'
 
 // Third party components
 import { NextSeo } from 'next-seo'
@@ -19,7 +19,7 @@ export function Seo({ title, description, url }: SeoProps) {
       description={`${description}`}
       openGraph={{
         type: 'website',
-        locale: 'en_IE',
+        locale: 'en_US',
         url: `${process.env.NEXT_PUBLIC_SITE_URL} ${url}`,
         site_name: "Every Benefits",
       }}
