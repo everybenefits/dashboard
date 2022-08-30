@@ -30,7 +30,7 @@ import { authErrorsEnglish } from "./errors"
 
 // Locales
 import { es, en } from "./locales"
-import { createAccount } from "@firebase/authentication"
+import { createAccount, loginIntoAccount } from "@firebase/authentication"
 
 export const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -91,9 +91,9 @@ export const AuthFormComponent: NextComponentType = () => {
 
   const signInHandler = async ({email, password }: AuthProps) => {
     try {
-      const data = await createAccount({
+      await loginIntoAccount({
         email, password
-      }) 
+      })
     
       } catch (error: any) {
       if (authErrorsEnglish[error.code]) {
