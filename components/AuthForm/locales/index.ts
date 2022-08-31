@@ -18,7 +18,12 @@ export const en = {
       createNewAccount: 'Create new account',
       forgotPassword: 'Forgot password?',
       loginInstead: 'Login instead?',
+      goBack: 'Go back',
     }
+  },
+  forgot: {
+    title: 'Forgot Password',
+    description: 'Enter your email to reset your password.',
   },
   errors: authErrorsEnglish
 }
@@ -41,7 +46,12 @@ export const es = {
       createNewAccount: 'Crear nueva cuenta',
       forgotPassword: 'Recuperar contraseña',
       loginInstead: 'Iniciar sesión',
+      goBack: 'Volver atrás',
     }
+  },
+  forgot: {
+    title: 'Recuperar contraseña',
+    description: 'Ingresa tu correo electrónico para recuperar tu contraseña.',
   },
   errors: authErrorsSpanish
 }

@@ -6,6 +6,7 @@ export const authErrorsEnglish: AuthErrorsType = {
   'auth/invalid-email': 'Invalid email',
   'auth/wrong-password': 'Invalid password',
   'auth/user-not-found': 'User not found',
+  'auth/user-disabled': 'User disabled',
 }
 
 export const authErrorsSpanish: AuthErrorsType = {
@@ -14,4 +15,5 @@ export const authErrorsSpanish: AuthErrorsType = {
   'auth/invalid-email': 'Email inválido',
   'auth/wrong-password': 'Contraseña inválida',
   'auth/user-not-found': 'Usuario no encontrado',
+  'auth/user-disabled': 'Usuario deshabilitado',
 }
