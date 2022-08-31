@@ -14,7 +14,7 @@ import type { AuthProps } from "./types"
 import dynamic from "next/dynamic"
 
 // React hooks
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 // NextJS Components
 const Image = dynamic(() => import("next/image"), { ssr: false })
@@ -30,7 +30,7 @@ import { authErrorsEnglish } from "./errors"
 
 // Locales
 import { es, en } from "./locales"
-import { createAccount, loginIntoAccount } from "@firebase/authentication"
+import { createAccount, loginIntoAccount, authStateChanged } from "@firebase/authentication"
 
 export const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -43,13 +43,19 @@ export const AuthFormComponent: NextComponentType = () => {
     password: "",
   }
 
-  const [user, setUser] = useState(initialState)
+  const [data, setData] = useState(initialState)
+  const [user, setUser] = useState(null)
+
+  // Effects
+  useEffect(() => {
+    authStateChanged(setUser)
+  }, [])
 
   // Hooks
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setUser({
-      ...user,
+    setData({
+      ...data,
 
       [name]: value,
     });
@@ -57,7 +63,7 @@ export const AuthFormComponent: NextComponentType = () => {
 
   const handleSubmit = async (e : React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    const { email, password } = user
+    const { email, password } = data
 
     if (pathname === "/signup") { 
       await signUpHandler({email, password})
@@ -68,7 +74,7 @@ export const AuthFormComponent: NextComponentType = () => {
       toast.error(t.errors['system/unexpected-error'])
     }
 
-  setUser(initialState)
+    setData(initialState)
   }
 
   // Sign handlers
@@ -136,10 +142,11 @@ export const AuthFormComponent: NextComponentType = () => {
 
                 <div className="mb-6">
                   <input
-                    type="text"
+                    type="email"
                     onChange={handleChange}
-                    value={user.email}
+                    value={data.email}
                     name="email"
+                    autoComplete="email"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                     placeholder={`${t.form.inputs.email}`}
                   />
@@ -150,7 +157,8 @@ export const AuthFormComponent: NextComponentType = () => {
                     type="password"
                     onChange={handleChange}
                     name="password"
-                    value={user.password}
+                    value={data.password}
+                    autoComplete="current-password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                     placeholder={`${t.form.inputs.password}`}
                   />
