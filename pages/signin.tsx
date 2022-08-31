@@ -9,8 +9,11 @@
 // Types
 import { NextPage } from 'next'
 
+// NextJS
+import dynamic from 'next/dynamic'
+
 // AUTH: Components
-import { AuthFormComponent } from '@components/AuthForm'
+const AuthFormComponent = dynamic(() => import('@components/AuthForm'), { ssr: false })
 
 const SignInPage: NextPage = () => {
   return (

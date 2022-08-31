@@ -1,4 +1,8 @@
+// Types
 import type { AuthErrorsType } from '../types';
+
+// Components
+import { toast } from 'react-toastify';
 
 export const authErrorsEnglish: AuthErrorsType = {
   'system/unexpected-error': 'Unexpected error',

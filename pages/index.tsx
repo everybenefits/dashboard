@@ -1,4 +1,6 @@
-import DashboardLayout from "@layouts/DashboardLayout";
+import dynamic from "next/dynamic";
+
+const DashboardLayout = dynamic(() => import("@layouts/DashboardLayout"), { ssr: false });
 
 export default function DashboardPage() {
   return (

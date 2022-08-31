@@ -3,7 +3,7 @@
  * @Description This component is used add authentication form to the page.
  * @Author Diesan Romero
  * @Date 08-28-2022
- * @Note This component has translation on file locales.ts.
+ * @Note This component has translation on folder locales.
  */
 
 // Types
@@ -28,8 +28,8 @@ import { useRouter } from "next/router"
 import { toast } from "react-toastify"
 
 // Local Components
-import { Seo } from "@components/Seo"
-import { Loader } from "@components/Loader"
+const Seo = dynamic(() => import("@components/Seo"), { ssr: false })
+const Loader = dynamic(() => import("@components/Loader"), { ssr: false })
 
 // Utilities
 import { authErrorsEnglish } from "./errors"
@@ -40,7 +40,7 @@ import { es, en } from "./locales"
 // Firebase
 import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
 
-export const AuthFormComponent: NextComponentType = () => {
+const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
   const { pathname, locale, push } = useRouter()
   const t = locale === "es" ? es : en
@@ -73,19 +73,32 @@ export const AuthFormComponent: NextComponentType = () => {
     });
   }
 
+  const errorHandler = (error : any) => {
+    if (authErrorsEnglish[error.code]) {
+      const e = t.errors[error.code]
+      toast.error(e)
+    } else {
+      toast.error(t.errors['system/unexpected-error'])
+    }
+  }
+
   const handleSubmit = async (e : React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const { email, password } = data
 
-    if (pathname === "/signup") { 
-      await signUpHandler({email, password})
-    } else if (pathname === "/signin") {
-      await signInHandler({email, password})
-    } else if (pathname === "/forgot-password") {
-      await forgotPasswordHandler(email)
-    }
-    else {
-      toast.error(t.errors['system/unexpected-error'])
+    switch (pathname) {
+      case "/signup":
+        await signUpHandler({email, password})
+        break;
+      case "/signin":
+        await signInHandler({email, password})
+        break;
+      case "/forgot-password":
+        await forgotPasswordHandler(email)
+        break;
+      default:
+        errorHandler({code: "system/unexpected-error"})
+        break;
     }
 
     setData(initialState)
@@ -100,12 +113,7 @@ export const AuthFormComponent: NextComponentType = () => {
       }) 
     
       } catch (error: any) {
-      if (authErrorsEnglish[error.code]) {
-        const e = t.errors[error.code]
-        toast.error(e)
-      } else {
-        toast.error(t.errors['system/unexpected-error'])
-      }
+        errorHandler(error)
       }
   }
 
@@ -116,12 +124,7 @@ export const AuthFormComponent: NextComponentType = () => {
       })
     
       } catch (error: any) {
-      if (authErrorsEnglish[error.code]) {
-        const e = t.errors[error.code]
-        toast.error(e)
-      } else {
-        toast.error(t.errors['system/unexpected-error'])
-      }
+        errorHandler(error)
       }
   }
 
@@ -134,12 +137,7 @@ export const AuthFormComponent: NextComponentType = () => {
       push('/signin')
     }
     catch (error: any) {
-      if (authErrorsEnglish[error.code]) {
-        const e = t.errors[error.code]
-        toast.error(e)
-      } else {
-        toast.error(t.errors['system/unexpected-error'])
-      }
+      errorHandler(error)
     }
   }
 
@@ -296,3 +294,5 @@ export const AuthFormComponent: NextComponentType = () => {
     </Fragment>
   )
 }
+
+export default AuthFormComponent;

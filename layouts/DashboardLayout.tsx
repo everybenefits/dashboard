@@ -4,8 +4,11 @@ import type { PropsWithChildren } from "react"
 // React
 import { Fragment, Suspense } from "react";
 
+// NextJS Components
+import dynamic from "next/dynamic";
+
 // Local Components
-import { Loader } from "@components/Loader";
+const Loader = dynamic(() => import("@components/Loader"))
 
 function DashboardLayout({ children}: PropsWithChildren) {
   return (
