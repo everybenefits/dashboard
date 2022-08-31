@@ -10,9 +10,9 @@
 import type { SeoProps } from './types'
 
 // Third party components
-import { NextSeo } from 'next-seo'
+import { NextSeo} from 'next-seo'
 
-export default function Seo({ title, description, url }: SeoProps) {
+const Seo = ({ title, description, url }: SeoProps) => {
   return (
     <NextSeo
       title={`${title} - Every Benefits`}
@@ -31,3 +31,5 @@ export default function Seo({ title, description, url }: SeoProps) {
     />
   )
 }
+
+export default Seo
