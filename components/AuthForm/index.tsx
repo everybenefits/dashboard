@@ -61,7 +61,7 @@ const AuthFormComponent: NextComponentType = () => {
       replace("/")
     }
   } , [user, replace])
-  
+
 
 
   // Hooks
@@ -106,7 +106,6 @@ const AuthFormComponent: NextComponentType = () => {
   }
 
   // Sign handlers
-
   const signUpHandler = async ({email, password }: AuthProps) => {
     try {
       await createAccount({
@@ -170,7 +169,6 @@ const AuthFormComponent: NextComponentType = () => {
       <Seo title={seo.title} description={seo.description} url={pathname} />
       <section className="my-5">
         <div className="container px-6 py-12 h-full">
-          
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
               <Image
