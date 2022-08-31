@@ -19,6 +19,7 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@firebase/*": ["firebase/*"],
+      "@layouts/*": ["layouts/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "hooks/authentication.ts"],

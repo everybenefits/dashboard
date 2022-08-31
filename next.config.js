@@ -21,15 +21,6 @@ const nextConfig = {
     defaultLocale: "es",
     localeDetection: true,
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/signin",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

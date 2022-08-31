@@ -13,6 +13,9 @@ import type { AuthProps } from "./types"
 // NextJS Components
 import dynamic from "next/dynamic"
 
+// React Components
+import { Fragment, Suspense } from "react"
+
 // React hooks
 import { useEffect, useState } from "react"
 
@@ -26,10 +29,15 @@ import { toast } from "react-toastify"
 
 // Local Components
 import { Seo } from "@components/Seo"
+import { Loader } from "@components/Loader"
+
+// Utilities
 import { authErrorsEnglish } from "./errors"
 
 // Locales
 import { es, en } from "./locales"
+
+// Firebase
 import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
 
 export const AuthFormComponent: NextComponentType = () => {
@@ -45,6 +53,10 @@ export const AuthFormComponent: NextComponentType = () => {
 
   const [data, setData] = useState(initialState)
   const [user, setUser] = useState(null)
+
+  if (user) {
+    push("/")
+  }
 
   // Effects
   useEffect(() => {
@@ -154,7 +166,8 @@ export const AuthFormComponent: NextComponentType = () => {
   }
 
   return (
-    <>
+    <Fragment>
+      <Suspense fallback={<Loader />}></Suspense>
       <Seo title={seo.title} description={seo.description} url={pathname} />
       <section className="my-5">
         <div className="container px-6 py-12 h-full">
@@ -280,6 +293,6 @@ export const AuthFormComponent: NextComponentType = () => {
           </div>
         </div>
       </section>
-    </>
+    </Fragment>
   )
 }

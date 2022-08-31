@@ -48,7 +48,7 @@ export const loginIntoAccount = async ({ email, password } : AuthProps) => {
     throw new Error('Email and password are required');
   }
 
-  const { user } = await signInWithEmailAndPassword(auth, email, password)
+  await signInWithEmailAndPassword(auth, email, password)
 }
 
 export const forgotPassword = async (email: string) => {
