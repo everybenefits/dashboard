@@ -7,9 +7,9 @@ import type { User } from "firebase/auth";
 
 // Types
 import { AuthProps } from "../components/AuthForm/types";
+import { FirebaseError } from "firebase/app";
 
 // Hooks
-
 function mapUserFromFirebaseAuthentication (user : User | null) {
   if (!user) {
     return null;
@@ -30,8 +30,14 @@ export const authStateChanged = (onChange: any) => {
 }
 
 export const createAccount = async ({ email, password } : AuthProps) => {
+  const missedFields: FirebaseError = {
+    name: 'auth/missing-data',
+    message: 'Missing email or password',
+    code: 'auth/missing-data',
+  }
+
   if (!email || !password) {
-    throw new Error('Email and password are required');
+    throw missedFields;
   }
 
   return await createUserWithEmailAndPassword(auth, email, password)

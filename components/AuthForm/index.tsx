@@ -187,6 +187,7 @@ export const AuthFormComponent: NextComponentType = () => {
                         value={data.email}
                         name="email"
                         autoComplete="email"
+                        required={true}
                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                         placeholder={`${t.form.inputs.email}`} />
                     </div>
@@ -196,6 +197,7 @@ export const AuthFormComponent: NextComponentType = () => {
                           onChange={handleChange}
                           name="password"
                           value={data.password}
+                          required={true}
                           autoComplete="current-password"
                           className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                           placeholder={`${t.form.inputs.password}`} />
@@ -207,26 +209,27 @@ export const AuthFormComponent: NextComponentType = () => {
                {
                 pathname === "/forgot-password" && (
                   <section className="flex flex-col">
-                  <section className="mb-6">
+                    <section className="mb-6">
                       <input
                         type="email"
                         onChange={handleChange}
                         value={data.email}
                         name="email"
                         autoComplete="email"
+                        required
                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                         placeholder={`${t.form.inputs.email}`} />
                     </section>
-                      <section className="flex flex-row justify-end">
+
+                    <section className="flex flex-row justify-end">
                         <Link href="/">
                             <a
                               className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out mb-2"
                             >{t.form.help.goBack}</a
                             >
                           </Link>
-                      </section>
-                    
                     </section>
+                  </section>
                 )
                }
 
