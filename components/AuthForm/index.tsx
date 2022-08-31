@@ -136,7 +136,7 @@ export const AuthFormComponent: NextComponentType = () => {
 
   switch (pathname) {
     case "/signup":
-      seo.title = t.forgot.title
+      seo.title = t.signup.title
       seo.description = t.forgot.description
       break;
     case "/signin":
@@ -176,7 +176,7 @@ export const AuthFormComponent: NextComponentType = () => {
               <form method="POST">
 
                {
-                pathname === "/signup" || pathname === '/signin' && (
+                ((pathname === "/signup") || (pathname === '/signin')) && (
                   <>
                   <div className="mb-6">
                       <input
@@ -197,7 +197,7 @@ export const AuthFormComponent: NextComponentType = () => {
                           autoComplete="current-password"
                           className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                           placeholder={`${t.form.inputs.password}`} />
-                      </div>
+                    </div>
                   </>
                 )
                }
