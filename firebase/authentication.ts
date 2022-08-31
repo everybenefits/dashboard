@@ -2,7 +2,7 @@
 import { auth } from "./index";
 
 // Firebase modules
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth'
 import type { User } from "firebase/auth";
 
 // Types
@@ -43,4 +43,14 @@ export const loginIntoAccount = async ({ email, password } : AuthProps) => {
   }
 
   const { user } = await signInWithEmailAndPassword(auth, email, password)
+}
+
+export const forgotPassword = async (email: string) => {
+  if (!email) {
+    throw new Error('Email is required');
+  }
+
+  return await sendPasswordResetEmail(auth, email, {
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+  });
 }

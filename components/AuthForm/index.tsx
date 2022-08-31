@@ -30,7 +30,7 @@ import { authErrorsEnglish } from "./errors"
 
 // Locales
 import { es, en } from "./locales"
-import { createAccount, loginIntoAccount, authStateChanged } from "@firebase/authentication"
+import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
 
 export const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -69,6 +69,8 @@ export const AuthFormComponent: NextComponentType = () => {
       await signUpHandler({email, password})
     } else if (pathname === "/signin") {
       await signInHandler({email, password})
+    } else if (pathname === "/forgot-password") {
+      await forgotPasswordHandler(email)
     }
     else {
       toast.error(t.errors['system/unexpected-error'])
@@ -81,7 +83,7 @@ export const AuthFormComponent: NextComponentType = () => {
 
   const signUpHandler = async ({email, password }: AuthProps) => {
     try {
-      const data = await createAccount({
+      await createAccount({
         email, password
       }) 
     
@@ -109,6 +111,22 @@ export const AuthFormComponent: NextComponentType = () => {
         toast.error(t.errors['system/unexpected-error'])
       }
       }
+  }
+
+  const forgotPasswordHandler = async (email: string) => {
+    try {
+      await forgotPassword(email)
+
+      toast.success('Email sent')
+    }
+    catch (error: any) {
+      if (authErrorsEnglish[error.code]) {
+        const e = t.errors[error.code]
+        toast.error(e)
+      } else {
+        toast.error(t.errors['system/unexpected-error'])
+      }
+    }
   }
 
   let seo = {
