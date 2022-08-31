@@ -23,7 +23,7 @@ function mapUserFromFirebaseAuthentication (user : AuthUserMapped) {
 
 export const authStateChanged = (onChange: any) => {
   return onAuthStateChanged(auth, user => {
-    const normalizedUser = user ? mapUserFromFirebaseAuthentication(user) : null;
+    const normalizedUser = mapUserFromFirebaseAuthentication(user);
     onChange(normalizedUser);
   })
 }

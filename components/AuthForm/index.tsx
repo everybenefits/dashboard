@@ -42,7 +42,7 @@ import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } fro
 
 const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
-  const { pathname, locale, push } = useRouter()
+  const { pathname, locale, replace } = useRouter()
   const t = locale === "es" ? es : en
   
    // State
@@ -54,14 +54,14 @@ const AuthFormComponent: NextComponentType = () => {
   const [data, setData] = useState(initialState)
   const [user, setUser] = useState(null)
 
-  if (user) {
-    push("/")
-  }
-
   // Effects
   useEffect(() => {
     authStateChanged(setUser)
   }, [])
+
+  useEffect(() => {
+    user && replace("/")
+  }, [user])
 
   // Hooks
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -134,7 +134,7 @@ const AuthFormComponent: NextComponentType = () => {
 
       toast.success(t.forgot.email)
 
-      push('/signin')
+      replace('/signin')
     }
     catch (error: any) {
       errorHandler(error)

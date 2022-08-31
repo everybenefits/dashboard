@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const DashboardLayout = dynamic(() => import("@layouts/DashboardLayout"), { ssr: false });
 const Seo = dynamic(() => import("@components/Seo"), { ssr: false });
-const Loader = dynamic(() => import("@components/Loader"), { ssr: false });
+const Loader = dynamic(() => import("@components/Loader"), { ssr: true });
 
 export default function DashboardPage() {
   return (
