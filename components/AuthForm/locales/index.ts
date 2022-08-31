@@ -24,6 +24,7 @@ export const en = {
   forgot: {
     title: 'Forgot Password',
     description: 'Enter your email to reset your password.',
+    email: 'Email sent. Please, check your inbox.',
   },
   errors: authErrorsEnglish
 }
@@ -52,6 +53,7 @@ export const es = {
   forgot: {
     title: 'Recuperar contraseña',
     description: 'Ingresa tu correo electrónico para recuperar tu contraseña.',
+    email: 'Correo electrónico enviado. Por favor, revisa tu bandeja de entrada.',
   },
   errors: authErrorsSpanish
 }

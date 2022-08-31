@@ -34,7 +34,7 @@ import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } fro
 
 export const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
-  const { pathname, locale } = useRouter()
+  const { pathname, locale, push } = useRouter()
   const t = locale === "es" ? es : en
   
    // State
@@ -117,7 +117,9 @@ export const AuthFormComponent: NextComponentType = () => {
     try {
       await forgotPassword(email)
 
-      toast.success('Email sent')
+      toast.success(t.forgot.email)
+
+      push('/signin')
     }
     catch (error: any) {
       if (authErrorsEnglish[error.code]) {
