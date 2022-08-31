@@ -2,11 +2,10 @@
 import { PropsWithChildren } from "react"
 
 // React
-import { Fragment, Suspense, useState, useEffect } from "react";
+import { Fragment, Suspense } from "react";
 
 // NextJS Components and Hooks
 import dynamic from "next/dynamic";
-import { Router, useRouter } from "next/router";
 
 // Local components
 import useUser from "@hooks/useUser";

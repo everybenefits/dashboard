@@ -39,6 +39,7 @@ import { es, en } from "./locales"
 
 // Firebase
 import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
+import useUser from "@hooks/useUser"
 
 const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -52,16 +53,16 @@ const AuthFormComponent: NextComponentType = () => {
   }
 
   const [data, setData] = useState(initialState)
-  const [user, setUser] = useState(null)
+  const user = useUser()
 
   // Effects
   useEffect(() => {
-    authStateChanged(setUser)
-  }, [])
+    if (user) {
+      replace("/")
+    }
+  } , [user, replace])
+  
 
-  useEffect(() => {
-    user && replace("/")
-  }, [user])
 
   // Hooks
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
