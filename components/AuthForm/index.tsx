@@ -10,36 +10,31 @@
 import type { NextComponentType } from "next"
 import type { AuthProps } from "./types"
 
-// NextJS Components
+// Components
 import dynamic from "next/dynamic"
-
-// React Components
 import { Fragment, Suspense } from "react"
-
-// React hooks
-import { useEffect, useState } from "react"
-
-// NextJS Components
-const Image = dynamic(() => import("next/image"), { ssr: false })
-const Link = dynamic(() => import("next/link"), { ssr: false })
-import { useRouter } from "next/router"
-
-// Third party components
 import { toast } from "react-toastify"
-
-// Local Components
 const Seo = dynamic(() => import("@components/Seo"), { ssr: false })
 const Loader = dynamic(() => import("@components/Loader"), { ssr: false })
+const Image = dynamic(() => import("next/image"), { ssr: false })
+const Link = dynamic(() => import("next/link"), { ssr: false })
+
+// Hooks
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import useUser from "@hooks/useUser"
 
 // Utilities
 import { authErrorsEnglish } from "./errors"
-
-// Locales
 import { es, en } from "./locales"
+import { createAccount, loginIntoAccount, forgotPassword } from "@firebase/authentication"
 
+<<<<<<< HEAD
 // Firebase
 import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
 import useUser from "@hooks/useUser"
+=======
+>>>>>>> dev
 
 const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -54,6 +49,7 @@ const AuthFormComponent: NextComponentType = () => {
 
   const [data, setData] = useState(initialState)
   const user = useUser()
+<<<<<<< HEAD
 
   // Effects
   useEffect(() => {
@@ -63,6 +59,12 @@ const AuthFormComponent: NextComponentType = () => {
   } , [user, replace])
 
 
+=======
+
+  useEffect(() => {
+    user && replace("/")
+  }, [user, replace])
+>>>>>>> dev
 
   // Hooks
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -83,8 +85,9 @@ const AuthFormComponent: NextComponentType = () => {
     }
   }
 
-  const handleSubmit = async (e : React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault()
+    
     const { email, password } = data
 
     switch (pathname) {
@@ -185,7 +188,7 @@ const AuthFormComponent: NextComponentType = () => {
               {seo.title}
             </h1>
           </section>
-              <form method="POST">
+              <form method="POST" onSubmit={handleSubmit}>
 
                {
                 ((pathname === "/signup") || (pathname === '/signin')) && (
@@ -197,7 +200,7 @@ const AuthFormComponent: NextComponentType = () => {
                         value={data.email}
                         name="email"
                         autoComplete="email"
-                        required={true}
+                        required
                         className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                         placeholder={`${t.form.inputs.email}`} />
                     </div>
@@ -278,7 +281,6 @@ const AuthFormComponent: NextComponentType = () => {
 
                 <button
                   type="submit"
-                  onClick={handleSubmit}
                   className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
