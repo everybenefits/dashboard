@@ -29,12 +29,6 @@ import { authErrorsEnglish } from "./errors"
 import { es, en } from "./locales"
 import { createAccount, loginIntoAccount, forgotPassword } from "@firebase/authentication"
 
-<<<<<<< HEAD
-// Firebase
-import { createAccount, loginIntoAccount, authStateChanged, forgotPassword } from "@firebase/authentication"
-import useUser from "@hooks/useUser"
-=======
->>>>>>> dev
 
 const AuthFormComponent: NextComponentType = () => {
   // Routing and locales
@@ -49,22 +43,10 @@ const AuthFormComponent: NextComponentType = () => {
 
   const [data, setData] = useState(initialState)
   const user = useUser()
-<<<<<<< HEAD
-
-  // Effects
-  useEffect(() => {
-    if (user) {
-      replace("/")
-    }
-  } , [user, replace])
-
-
-=======
 
   useEffect(() => {
     user && replace("/")
   }, [user, replace])
->>>>>>> dev
 
   // Hooks
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -109,6 +91,7 @@ const AuthFormComponent: NextComponentType = () => {
   }
 
   // Sign handlers
+
   const signUpHandler = async ({email, password }: AuthProps) => {
     try {
       await createAccount({
@@ -172,6 +155,7 @@ const AuthFormComponent: NextComponentType = () => {
       <Seo title={seo.title} description={seo.description} url={pathname} />
       <section className="my-5">
         <div className="container px-6 py-12 h-full">
+          
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
               <Image
