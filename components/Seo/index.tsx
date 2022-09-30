@@ -1,32 +1,24 @@
-/**
- * @Title Seo
- * @Description This component is used to add SEO to the page.
- * @Author Diesan Romero
- * @Date 08-28-2022
- * @Note This component doest not have any translation.
- */
-
 // Types
 import type { SeoProps } from './types'
 
 // Third party components
-import { NextSeo} from 'next-seo'
+import { NextSeo } from 'next-seo'
 
-const Seo = ({ title, description, url }: SeoProps) => {
+const Seo = ({ title, description, url }: SeoProps): JSX.Element => {
   return (
     <NextSeo
-      title={`${title} - Every Benefits`}
+      title={`${title} - Dashboard`}
       description={`${description}`}
       openGraph={{
         type: 'website',
         locale: 'en_US',
         url: `${process.env.NEXT_PUBLIC_SITE_URL} ${url}`,
-        site_name: "Every Benefits",
+        site_name: title,
       }}
       twitter={{
         handle: '@diesanromero',
         site: '@everybenefits',
-        cardType: 'summary_large_image',
+        cardType: 'summary_large_image'
       }}
     />
   )

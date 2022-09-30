@@ -1,25 +1,51 @@
-/**
- * @Title Page
- * @Description This page is for route /signup
- * @Author Diesan Romero
- * @Date 08-28-2022
- * @Note This page uses the component AuthForm filed on @components/AuthForm
- */
-
 // Types
 import { NextPage } from 'next'
 
 // NextJS
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
-// Locale components
-const AuthFormComponent = dynamic(() => import('@components/AuthForm'), { ssr: false })
+// ReactJS
+import { useState } from 'react'
+
+// Firebase
+import { createAccount } from '@firebase/authentication'
+
+// AUTH: Components
+const SignUpForm = dynamic(() => import('@components/SignUpForm'), {
+  ssr: false
+})
 
 const SignUpPage: NextPage = () => {
+  const { push } = useRouter()
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const onChange = (e: any) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault()
+    try {
+      await createAccount({
+        email: form.email,
+        password: form.password
+      })
+
+      push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
-    <div>
-      <AuthFormComponent />
-    </div>
+    <SignUpForm onChange={onChange} onSubmit={onSubmit} />
   )
 }
 

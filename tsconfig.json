@@ -21,8 +21,14 @@
       "@firebase/*": ["firebase/*"],
       "@layouts/*": ["layouts/*"],
       "@hooks/*": ["hooks/*"],
+      "@types/*": ["types/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "hooks/authentication.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "hooks/authentication.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,18 +1,16 @@
 // Firebase
-import { initializeApp } from "firebase/app";
+import { FirebaseApp, initializeApp } from "firebase/app";
 
 // Firebase Authentication
-import { getAuth } from "firebase/auth";
+import { Auth, getAuth } from "firebase/auth";
 
 // Config
 import { firebaseConfig } from "./config";
 
 // Initialize Firebase
+let app: FirebaseApp = initializeApp(firebaseConfig);
 
-let app
+// Authentication
+let auth: Auth = getAuth(app);
 
-if (!app) {
-  app = initializeApp(firebaseConfig);
-}
-
-export const auth = getAuth(app);
+export { auth };

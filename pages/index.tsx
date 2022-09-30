@@ -1,20 +1,23 @@
 // ReactJS
-import { Suspense } from "react";
+import { Suspense } from 'react'
 
 // NextJS
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic'
 
+// Components
+const DashboardLayout = dynamic(async () => await import('@layouts/DashboardLayout'), {
+  ssr: false
+})
+const Seo = dynamic(async () => await import('@components/Seo'), { ssr: false })
+const Spinner = dynamic(async () => await import('@components/Spinner'), { ssr: true })
 
-const DashboardLayout = dynamic(() => import("@layouts/DashboardLayout"), { ssr: false });
-const Seo = dynamic(() => import("@components/Seo"), { ssr: false });
-const Loader = dynamic(() => import("@components/Loader"), { ssr: true });
-
-export default function DashboardPage() {
+export default function DashboardPage (): JSX.Element {
   return (
     <DashboardLayout>
-      <Suspense fallback={<Loader />} />
-      <Seo title="Home - Dashboard" description="" url="" /> 
-      <h2>Dashboard</h2>
+      <Suspense fallback={<Spinner />}>
+        <Seo title="Home - Dashboard" description="" url="" />
+        <h2>Dashboard</h2>
+      </Suspense>
     </DashboardLayout>
-  );
+  )
 }

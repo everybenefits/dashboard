@@ -1,8 +1,5 @@
 // Types
-import type { AuthErrorsType } from '../types';
-
-// Components
-import { toast } from 'react-toastify';
+import type { AuthErrorsType } from '../../../types/Auth'
 
 export const authErrorsEnglish: AuthErrorsType = {
   'system/unexpected-error': 'Unexpected error',
@@ -12,6 +9,7 @@ export const authErrorsEnglish: AuthErrorsType = {
   'auth/user-not-found': 'User not found',
   'auth/user-disabled': 'User disabled',
   'auth/missing-data': 'Missing email or password',
+  'auth/operation-not-allowed': 'Operation not allowed',
 }
 
 export const authErrorsSpanish: AuthErrorsType = {
@@ -22,4 +20,5 @@ export const authErrorsSpanish: AuthErrorsType = {
   'auth/user-not-found': 'Usuario no encontrado',
   'auth/user-disabled': 'Usuario deshabilitado',
   'auth/missing-data': 'Correo electrónico o contraseña no enviados',
+  'auth/operation-not-allowed': 'Operación no permitida',
 }

@@ -1,5 +1,5 @@
 // Types
-import { PropsWithChildren } from "react"
+import { PropsWithChildren } from "react";
 
 // React
 import { Fragment, Suspense } from "react";
@@ -7,21 +7,24 @@ import { Fragment, Suspense } from "react";
 // NextJS Components and Hooks
 import dynamic from "next/dynamic";
 
-// Local components
+// Local hooks
 import useUser from "@hooks/useUser";
 
 // Local Components
-const Loader = dynamic(() => import("@components/Loader"))
+const Spinner = dynamic(() => import("@components/Spinner"), { ssr: true });
+const Seo = dynamic(() => import("@components/Seo"), { ssr: false });
 
-function DashboardLayout({ children}: PropsWithChildren) {
-  useUser()
-  return (
+// Layout
+function DashboardLayout({ children, title, description, url }: any): JSX.Element {
+  const user = useUser();
+
+  return user ? (
     <Fragment>
-      <Suspense fallback={<Loader />}></Suspense>
-      <h1>Layout</h1>
-      {children}
-    </Fragment>
-  )
+      <Seo title={title} description={description} url={url} />
+      {children}</Fragment>
+  ) : (
+    <Suspense fallback={<Spinner />} />
+  );
 }
 
 export default DashboardLayout;
