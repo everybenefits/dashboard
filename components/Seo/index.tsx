@@ -1,5 +1,5 @@
 // Types
-import type { SeoProps } from './types'
+import type { SeoProps } from '../../types/Seo'
 
 // Third party components
 import { NextSeo } from 'next-seo'
@@ -18,7 +18,7 @@ const Seo = ({ title, description, url }: SeoProps): JSX.Element => {
       twitter={{
         handle: '@diesanromero',
         site: '@everybenefits',
-        cardType: 'summary_large_image'
+        cardType: 'summary_large_image',
       }}
     />
   )

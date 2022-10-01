@@ -3,6 +3,7 @@ import type { AuthErrorsType } from '../types/Auth'
 
 export const authErrorsEnglish: AuthErrorsType = {
   'system/unexpected-error': 'Unexpected error',
+  'system/email-sent': 'Email sent',
   'auth/email-already-in-use': 'Email already in use',
   'auth/invalid-email': 'Invalid email',
   'auth/wrong-password': 'Invalid password',
@@ -14,6 +15,7 @@ export const authErrorsEnglish: AuthErrorsType = {
 
 export const authErrorsSpanish: AuthErrorsType = {
   'system/unexpected-error': 'Error inesperado',
+  'system/email-sent': 'Correo electrónico enviado',
   'auth/email-already-in-use': 'Email ya en uso',
   'auth/invalid-email': 'Email inválido',
   'auth/wrong-password': 'Contraseña inválida',
