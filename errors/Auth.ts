@@ -1,5 +1,5 @@
 // Types
-import type { AuthErrorsType } from '../../../types/Auth'
+import type { AuthErrorsType } from '../types/Auth'
 
 export const authErrorsEnglish: AuthErrorsType = {
   'system/unexpected-error': 'Unexpected error',

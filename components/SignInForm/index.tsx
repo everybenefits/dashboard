@@ -13,7 +13,7 @@ const Seo = dynamic(async () => await import('@components/Seo'), { ssr: false })
 const Image = dynamic(async () => await import('next/image'), { ssr: false })
 const Link = dynamic(async () => await import('next/link'), { ssr: false })
 
-function SignInForm({ onChange, onSubmit }: any): JSX.Element {
+function SignInForm({ onChange, onSubmit, value }: any): JSX.Element {
   // Router
   const { pathname, locale } = useRouter()
 
@@ -52,6 +52,7 @@ function SignInForm({ onChange, onSubmit }: any): JSX.Element {
                     autoComplete="email"
                     placeholder={t.form.input.email}
                     onChange={onChange}
+                    value={value.email}
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-900 focus:outline-none"
                     required
                   />
@@ -63,6 +64,7 @@ function SignInForm({ onChange, onSubmit }: any): JSX.Element {
                     autoComplete="current-password"
                     onChange={onChange}
                     placeholder={t.form.input.password}
+                    value={value.password}
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-900 focus:outline-none"
                     required
                   />
