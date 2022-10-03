@@ -7,7 +7,7 @@ import { NextSeo } from 'next-seo'
 const Seo = ({ title, description, url }: SeoProps): JSX.Element => {
   return (
     <NextSeo
-      title={`${title} - Dashboard`}
+      title={`${title}`}
       description={`${description}`}
       openGraph={{
         type: 'website',

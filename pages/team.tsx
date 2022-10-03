@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 // NextJS
 import dynamic from 'next/dynamic'
-import Stats from '@components/Stats'
+import Table from '@components/Table'
 
 // Components
 const DashboardLayout = dynamic(
@@ -21,12 +21,8 @@ export default function DashboardPage(): JSX.Element {
   return (
     <DashboardLayout>
       <Suspense fallback={<Spinner />}>
-        <Seo title="Home - Dashboard" description="" url="" />
-        <section className="grid grid-cols-1 gap-y-10">
-          <Stats days={30} />
-
-          <Stats days={90} />
-        </section>
+        <Seo title="Dashboard - Team" description="" url="" />
+        <Table />
       </Suspense>
     </DashboardLayout>
   )
