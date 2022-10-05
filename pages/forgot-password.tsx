@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 import { useState } from 'react'
 
 // Firebase
-import { forgotPassword } from '@firebase/authentication'
+import { forgotPassword } from '@firebase/client/authentication'
 
 // Errors
 import { authErrorsEnglish as en, authErrorsSpanish as es } from 'errors/Auth'

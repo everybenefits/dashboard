@@ -5,7 +5,7 @@ export default function Pagination({
   fetchMore,
   fetchLess,
   usersShown,
-}) {
+}: any) {
   const disabledNext = usersShown < 10
   const disabledPrev = start === 1
   return (

@@ -23,7 +23,7 @@ function classNames(...classes: string[]) {
 
 export default function Table() {
   // Reference
-  const checkbox = useRef()
+  const checkbox = useRef() as React.MutableRefObject<HTMLInputElement>
   const total = useGetUsers().length
 
   // State
@@ -57,8 +57,8 @@ export default function Table() {
     const q = query(reference, orderBy('displayName', 'asc'), limit(10))
     const snapshot = await getDocs(q)
 
-    const users = snapshot.docs.map((doc) => doc.data())
-    const lastDoc = snapshot.docs[snapshot.docs.length - 1]
+    const users: any = snapshot.docs.map((doc) => doc.data())
+    const lastDoc: any = snapshot.docs[snapshot.docs.length - 1]
     setUsers(users)
     setLastDoc(lastDoc)
 
@@ -72,9 +72,9 @@ export default function Table() {
       startAfter(lastDoc),
       limit(10),
     )
-    const snapshot = await getDocs(q)
-    const moreUsers = snapshot.docs.map((doc) => doc.data())
-    const lDoc = snapshot.docs[snapshot.docs.length - 1]
+    const snapshot: any = await getDocs(q)
+    const moreUsers: any = snapshot.docs.map((doc: any) => doc.data())
+    const lDoc: any = snapshot.docs[snapshot.docs.length - 1]
 
     setUsers((users) => moreUsers)
     setLastDoc(lDoc)
@@ -90,11 +90,11 @@ export default function Table() {
       limit(10),
     )
 
-    const snapshot = await getDocs(q)
-    const moreUsers = snapshot.docs.map((doc) => doc.data())
-    const lDoc = snapshot.docs[snapshot.docs.length - 1]
+    const snapshot: any = await getDocs(q)
+    const moreUsers: any = snapshot.docs.map((doc: any) => doc.data())
+    const lDoc: any = snapshot.docs[snapshot.docs.length - 1]
 
-    setUsers((users) => moreUsers)
+    setUsers((users: any) => moreUsers)
     setLastDoc(lDoc)
     setOffset(offset - 10)
     setEnd(end - 10)
@@ -188,7 +188,7 @@ export default function Table() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {users.map((user) => (
+                  {users.map((user: any) => (
                     <tr
                       key={user.uid}
                       className={
