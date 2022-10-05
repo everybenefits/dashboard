@@ -38,6 +38,7 @@ const SignInPage: NextPage = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault()
+
     try {
       await forgotPassword(data.email)
 
@@ -45,8 +46,6 @@ const SignInPage: NextPage = () => {
 
       toast.success(t['system/email-sent'])
       push('/signin')
-
-      push('/')
     } catch (error: any) {
       toast.error(t[error.code])
       setData(defaultState)

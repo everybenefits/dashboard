@@ -10,14 +10,14 @@ import { toast } from 'react-toastify'
 import { useState } from 'react'
 
 // Firebase
-import { createAccount } from '@firebase/authentication'
+import { createAccount } from '@firebase/client/authentication'
 
 // Errors
 import { authErrorsEnglish as en, authErrorsSpanish as es } from 'errors/Auth'
 
 // AUTH: Components
 const SignUpForm = dynamic(() => import('@components/SignUpForm'), {
-  ssr: false
+  ssr: false,
 })
 
 const SignUpPage: NextPage = () => {
@@ -25,7 +25,7 @@ const SignUpPage: NextPage = () => {
   const t = locale === 'es' ? es : en
   const defaultState = {
     email: '',
-    password: ''
+    password: '',
   }
 
   const [data, setdata] = useState(defaultState)
@@ -33,7 +33,7 @@ const SignUpPage: NextPage = () => {
   const onChange = (e: any) => {
     setdata({
       ...data,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
@@ -42,7 +42,7 @@ const SignUpPage: NextPage = () => {
     try {
       await createAccount({
         email: data.email,
-        password: data.password
+        password: data.password,
       })
 
       setdata(defaultState)
@@ -54,9 +54,7 @@ const SignUpPage: NextPage = () => {
     }
   }
 
-  return (
-    <SignUpForm onChange={onChange} onSubmit={onSubmit} value={data} />
-  )
+  return <SignUpForm onChange={onChange} onSubmit={onSubmit} value={data} />
 }
 
 export default SignUpPage

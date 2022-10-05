@@ -1,5 +1,5 @@
 // Firebase auth config
-import { auth } from './index'
+import { auth } from '../index'
 
 // Firebase modules
 import {
@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth'
 
 // Types
-import { AuthProps, AuthUserMapped } from '../types/Auth'
+import { AuthProps, AuthUserMapped } from '../../types/Auth'
 import { FirebaseError } from 'firebase/app'
 
 // Hooks

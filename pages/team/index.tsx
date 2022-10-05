@@ -3,7 +3,9 @@ import { Suspense } from 'react'
 
 // NextJS
 import dynamic from 'next/dynamic'
-import Table from '@components/Table'
+const Table = dynamic(async () => await import('@components/Table'), {
+  ssr: false,
+})
 
 // Components
 const DashboardLayout = dynamic(
