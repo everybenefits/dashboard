@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 // NextJS
 import dynamic from 'next/dynamic'
-import Stats from '@components/Stats'
+import Calendar from '@components/Calendar'
 
 // Components
 const DashboardLayout = dynamic(
@@ -17,27 +17,12 @@ const Spinner = dynamic(async () => await import('@components/Spinner'), {
   ssr: true,
 })
 
-const stats = [
-  {
-    name: 'Agents',
-    stat: 30,
-  },
-  {
-    name: 'New Agents',
-    stat: 5,
-  },
-  {
-    name: 'Agencies',
-    stat: 15,
-  },
-]
-
 export default function DashboardPage(): JSX.Element {
   return (
     <DashboardLayout>
       <Suspense fallback={<Spinner />}>
-        <Seo title="Home - Dashboard" description="" url="" />
-        <Stats stats={stats} />
+        <Seo title="Calendar - Dashboard" description="" url="" />
+        <Calendar />
       </Suspense>
     </DashboardLayout>
   )
