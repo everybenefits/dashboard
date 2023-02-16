@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 // NextJS
 import dynamic from 'next/dynamic'
 import Stats from '@components/Stats'
+import MiniCalendar from '@components/MiniCalendar'
 
 // Components
 const DashboardLayout = dynamic(
@@ -37,7 +38,15 @@ export default function DashboardPage(): JSX.Element {
     <DashboardLayout>
       <Suspense fallback={<Spinner />}>
         <Seo title="Home - Dashboard" description="" url="" />
-        <Stats stats={stats} />
+        <main className="grid grid-rows-1 gap-5">
+          <section>
+            <Stats stats={stats} />
+          </section>
+
+          <section>
+            <MiniCalendar />
+          </section>
+        </main>
       </Suspense>
     </DashboardLayout>
   )

@@ -156,7 +156,7 @@ export default function Calendar() {
                   <time
                     dateTime={day.date}
                     className={classNames(
-                      day.isToday && 'bg-indigo-600 font-semibold text-white',
+                      day.isToday && 'bg-green-600 font-semibold text-white',
                       'mx-auto flex h-7 w-7 items-center justify-center rounded-full',
                     )}
                   >

@@ -3,8 +3,8 @@ import {
   ChartBarIcon,
   FolderIcon,
   HomeIcon,
-  InboxIcon,
   UsersIcon,
+  CreditCardIcon,
 } from '@heroicons/react/24/outline'
 
 const navigation = [
@@ -18,9 +18,9 @@ const navigation = [
     current: false,
   },
   {
-    name: 'Documentos',
-    href: '/es/documents',
-    icon: InboxIcon,
+    name: 'Facturación',
+    href: '/es/billing',
+    icon: CreditCardIcon,
     current: false,
   },
   { name: 'Reportes', href: '/es/reports', icon: ChartBarIcon, current: false },
