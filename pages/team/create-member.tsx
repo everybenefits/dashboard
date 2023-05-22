@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 
 // NextJS
 import dynamic from 'next/dynamic'
+
 // Components
 const CreateMemberForm = dynamic(() => import('@components/CreateMemberForm'), {
   ssr: false,
