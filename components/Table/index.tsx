@@ -151,7 +151,7 @@ export default function Table() {
                         type="checkbox"
                         className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 sm:left-6"
                         ref={checkbox}
-                        checked={checked}
+                        checked={!checked}
                         onChange={toggleAll}
                       />
                     </th>
