@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 // NextJS
 import dynamic from 'next/dynamic'
-import Calendar from '@components/Calendar'
+import { MeetingsComponent } from '@components/Meetings'
 
 // Components
 const DashboardLayout = dynamic(
@@ -21,8 +21,12 @@ export default function DashboardPage(): JSX.Element {
   return (
     <DashboardLayout>
       <Suspense fallback={<Spinner />}>
-        <Seo title="Calendar - Dashboard" description="" url="" />
-        <Calendar />
+        <Seo
+          title="Meetings - Dashboard"
+          description=""
+          url="https://dashboard.everybenefits.us/meetings"
+        />
+        <MeetingsComponent />
       </Suspense>
     </DashboardLayout>
   )

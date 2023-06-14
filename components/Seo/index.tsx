@@ -1,7 +1,7 @@
 // Types
 import type { SeoProps } from '../../types/Seo'
 
-// Third party components
+// Third party componentsx
 import { NextSeo } from 'next-seo'
 
 const Seo = ({ title, description, url }: SeoProps): JSX.Element => {
@@ -12,7 +12,7 @@ const Seo = ({ title, description, url }: SeoProps): JSX.Element => {
       openGraph={{
         type: 'website',
         locale: 'en_US',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL} ${url}`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}${url}`,
         site_name: title,
       }}
       twitter={{

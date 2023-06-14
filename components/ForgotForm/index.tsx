@@ -69,10 +69,11 @@ function ForgotForm({ onChange, onSubmit, value }: any): JSX.Element {
                     </a>
                   </button>
 
-                  <Link href="/forgot-password">
-                    <a className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out">
-                      {t.links.signUp}
-                    </a>
+                  <Link
+                    href="/forgot-password"
+                    className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out"
+                  >
+                    {t.links.signUp}
                   </Link>
                 </section>
 

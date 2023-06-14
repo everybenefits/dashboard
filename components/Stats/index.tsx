@@ -1,7 +1,9 @@
 export default function Stats({ stats }: { stats: any }) {
   return (
     <div>
-      <h3 className="text-lg font-medium leading-6 text-gray-900">Total</h3>
+      <h3 className="text-lg font-medium leading-6 text-gray-900">
+        Statistics
+      </h3>
       <dl className="mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3">
         {stats.map((item: any) => (
           <div

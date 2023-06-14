@@ -71,16 +71,18 @@ function SignInForm({ onChange, onSubmit, value }: any): JSX.Element {
                 </div>
 
                 <section className="flex flex-col md:flex-row justify-between items-center mb-6">
-                  <Link href="/signup">
-                    <a className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out">
-                      {t.links.signUp}
-                    </a>
+                  <Link
+                    href="/signup"
+                    className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out"
+                  >
+                    {t.links.signUp}
                   </Link>
 
-                  <Link href="/forgot-password">
-                    <a className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out">
-                      {t.links.forgotPassword}
-                    </a>
+                  <Link
+                    href="/forgot-password"
+                    className="text-green-600 hover:text-green-700 focus:text-green-700 active:text-green-800 duration-200 transition ease-in-out"
+                  >
+                    {t.links.forgotPassword}
                   </Link>
                 </section>
 

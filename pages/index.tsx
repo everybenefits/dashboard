@@ -2,12 +2,12 @@
 import { Suspense, useId } from 'react'
 
 // Hooks
-import { useGetUsers } from '@hooks/useGetUsers'
+import { useGetInactiveUsers, useGetUsers } from '@hooks/useGetUsers'
 
 // NextJS
 import dynamic from 'next/dynamic'
 import Stats from '@components/Stats'
-import MiniCalendar from '@components/MiniCalendar'
+import { MeetingsComponent } from '@components/Meetings'
 
 // Components
 const Seo = dynamic(async () => await import('@components/Seo'), { ssr: false })
@@ -23,9 +23,10 @@ const Spinner = dynamic(async () => await import('@components/Spinner'), {
 
 export default function DashboardPage(): JSX.Element {
   const statsID = useId()
-  const miniCalendarID = useId()
+  const meetingsID = useId()
 
   const usersLenght = useGetUsers().length
+  const usersInactive = useGetInactiveUsers()
 
   const stats = [
     {
@@ -35,6 +36,10 @@ export default function DashboardPage(): JSX.Element {
     {
       name: 'Agencies',
       stat: 0,
+    },
+    {
+      name: 'Inactive Users',
+      stat: usersInactive,
     },
   ]
 
@@ -47,8 +52,8 @@ export default function DashboardPage(): JSX.Element {
             <Stats stats={stats} />
           </section>
           <hr />
-          <section id={miniCalendarID}>
-            <MiniCalendar />
+          <section id={meetingsID}>
+            <MeetingsComponent />
           </section>
         </main>
       </Suspense>

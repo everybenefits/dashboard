@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getDocuments } from '@firebase/client/firestore'
+import { collection, query, where, getDocs } from 'firebase/firestore'
+import { firestore } from '@firebase/index'
 
 export function useGetUsers() {
   const [users, setUsers] = useState([])
@@ -11,10 +13,12 @@ export function useGetUsers() {
       querySnapshot.forEach((doc) => {
         users.push({
           id: doc.id,
-          displayName: doc.data().displayName,
+          firstName: doc.data().firstName,
+          lastName: doc.data().lastName,
           email: doc.data().email,
           agency: doc.data().agency,
           role: doc.data().role,
+          phone: doc.data().phone,
         })
       })
       setUsers(users)
@@ -22,4 +26,22 @@ export function useGetUsers() {
   }, [])
 
   return users
+}
+
+export function useGetInactiveUsers() {
+  const [quantity, setQuantity] = useState(0)
+
+  useEffect(() => {
+    const q = query(
+      collection(firestore, 'users'),
+      where('status', '!=', 'active'),
+    )
+    getDocs(q).then((querySnapshot) => {
+      const size = querySnapshot.size
+
+      setQuantity(size)
+    })
+  }, [])
+
+  return quantity
 }

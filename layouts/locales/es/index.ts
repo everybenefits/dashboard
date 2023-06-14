@@ -2,7 +2,7 @@ import { CalendarIcon, HomeIcon, UsersIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Panel', href: '/es', icon: HomeIcon, current: true },
-  { name: 'Equipo', href: '/es/team', icon: UsersIcon, current: false },
+  { name: 'Reuniones', href: '/es/meetings', icon: UsersIcon, current: false },
   {
     name: 'Calendario',
     href: '/es/calendar',
