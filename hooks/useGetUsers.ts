@@ -34,7 +34,7 @@ export function useGetInactiveUsers() {
   useEffect(() => {
     const q = query(
       collection(firestore, 'users'),
-      where('status', '!=', 'active'),
+      where('status', '!=', 'approved'),
     )
     getDocs(q).then((querySnapshot) => {
       const size = querySnapshot.size

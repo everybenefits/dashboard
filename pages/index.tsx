@@ -44,9 +44,8 @@ export default function DashboardPage(): JSX.Element {
   ]
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title={'Dashboard'}>
       <Suspense fallback={<Spinner />}>
-        <Seo title="Home - Dashboard" description="" url="" />
         <main className="grid grid-rows-1 gap-5">
           <section id={statsID}>
             <Stats stats={stats} />

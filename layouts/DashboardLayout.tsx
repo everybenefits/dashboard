@@ -50,7 +50,11 @@ function DashboardLayout({
 
   return user ? (
     <Fragment>
-      <Seo title={title} description={description} url={url} />
+      <Seo
+        title={`${title} - Every Benefits`}
+        description={description}
+        url={url}
+      />
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
